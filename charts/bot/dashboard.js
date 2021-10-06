@@ -20,7 +20,17 @@ function addGraph(options) {
     "timeShift": null,
     "title": "",
     "type": "graph",
-    "transparent": true
+    "transparent": true,
+    "legend": {
+      "avg": false,
+      "current": false,
+      "max": false,
+      "min": false,
+      "show": true,
+      "total": false,
+      "values": false,
+      "rightSide": true
+    },
   };
 }
 function addRow(y, title) {
