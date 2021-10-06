@@ -2,6 +2,7 @@ const query = qnext.getValue('query');
 
 const refId = {
   divider: query.divider ? query.divider : 'auto',
+  steps: query.steps,
 }
 
 let idCount = 1;
