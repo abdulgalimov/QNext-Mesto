@@ -73,7 +73,7 @@ function addPie(options) {
   const x = options.x||0;
   const y = options.y||0;
   const w = options.w||24;
-  const h = options.h||10;
+  const h = options.h||12;
   return {
     title: options.title,
     "datasource": "qnext",
@@ -110,5 +110,24 @@ authPanel.targets.push({
   target: "auth",
   refId,
 });
+
+dashboard.panels.push({
+  "type": "text",
+  "title": "Panel Title",
+  "gridPos": {
+    "x": 0,
+    "y": 12,
+    "w": 24,
+    "h": 8
+  },
+  "targets": [],
+  "timeFrom": null,
+  "timeShift": null,
+  "options": {
+    "mode": "markdown",
+    "content": " * startAuth: Старт авторизации\n * sendOkEmail: Юзер написал свою почту, ему отправлена ссылка для входа"
+  },
+  "datasource": null
+})
 
 exports.dashboard = dashboard;
