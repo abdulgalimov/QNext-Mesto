@@ -124,7 +124,7 @@ authPanel.targets.push({
 
 dashboard.panels.push({
   "type": "text",
-  "title": "Panel Title",
+  "title": "",
   "gridPos": {
     "x": 0,
     "y": 12,
