@@ -26,12 +26,11 @@ async function run() {
       tasksData[name] = qnext.customStats.read(options);
     }
   }
-
   Object.keys(names).map(key => {
     createSql(key, names[key]);
   })
   const result = await qnext.tasks.parallel(tasksData);
-  Object.keys(result).map(key => {
+  Object.keys(names).map(key => {
     getTarget(key, result[key]);
   })
   //
