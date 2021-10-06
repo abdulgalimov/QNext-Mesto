@@ -2,8 +2,6 @@ const {divider, where, steps} = qnext.getValue('localVar');
 
 const targets = [];
 const names = {
-  block: 4,
-  unblock: 5,
   startAuth: 1001,
   sendOkEmail: 1003,
   sendErrEmail: 1004,
@@ -11,6 +9,8 @@ const names = {
   emailOpenErr: 1006,
   rulesOk: 1007,
   rulesErr: 1008,
+  block: 4,
+  unblock: 5,
 };
 async function run() {
   const tasksData = {};
