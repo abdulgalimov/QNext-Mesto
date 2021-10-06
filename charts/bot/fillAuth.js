@@ -3,8 +3,8 @@ const {divider, where, steps} = qnext.getValue('localVar');
 const targets = [];
 const names = {
   startAuth: 1001,
-  sendOkEmail: 1003,
-  sendErrEmail: 1004,
+  sendEmailOk: 1003,
+  sendEmailErr: 1004,
   emailOpenOk: 1005,
   emailOpenErr: 1006,
   rulesOk: 1007,
