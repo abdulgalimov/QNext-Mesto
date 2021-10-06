@@ -15,18 +15,20 @@ const names = {
 async function run() {
   const tasksData = {};
   function createSql(name, param1) {
-    if (steps && !steps.contains(name)) return;
-    const options = {
-      select: 'count() as value, (intDiv(toUInt32(createdDate), '+divider+') * '+divider+') * 1000 as time',
-      where: where.time + ' param1 = '+param1,
-      group: 'time',
-      order: 'time'
+    if (!steps || steps.includes(name)) {
+      const options = {
+        select: 'count() as value, (intDiv(toUInt32(createdDate), ' + divider + ') * ' + divider + ') * 1000 as time',
+        where: where.time + ' param1 = ' + param1,
+        group: 'time',
+        order: 'time'
+      }
+      tasksData[name] = qnext.customStats.read(options);
     }
-    tasksData[name] = qnext.customStats.read(options);
   }
   Object.keys(names).map(key => {
     createSql(key, names[key]);
   })
+  exports.tasksData = tasksData;
   const result = await qnext.tasks.parallel(tasksData);
   Object.keys(result).map(key => {
     getTarget(key, result[key]);
