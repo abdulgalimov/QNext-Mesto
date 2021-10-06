@@ -22,21 +22,15 @@ async function run() {
     rulesOk: createSql(1007),
     rulesErr: createSql(1008),
   });
-  getTarget('Старт авторизации', result.startAuth);
-  getTarget('Юзер написал свою почту, ему отправлена ссылка для входа', result.sendOkEmail);
-  getTarget('Юзер написал не валидную почту, ссылка для входа не отправлена', result.sendErrEmail);
-  getTarget('Юзер открыл ссылку из почты, авторизация пройдена', result.emailOpenOk);
-  getTarget('Юзер открыл ссылку из почты, авторизация НЕ пройдена. Протухла ссылка, либо открыл не тем telegram-аккаунтом.', result.emailOpenErr);
-  getTarget('Юзер подтвердил правила', result.rulesOk);
-  getTarget('Юзер не подтвердил правила', result.rulesErr);
-  getTarget('🚫Блокировка бота юзером', result.block);
-  getTarget('✅Разблокировка бота юзером', result.unblock);
+  Object.keys(result).map(key => {
+    getTarget(key, result[key]);
+  })
   //
   exports.targets = targets;
 }
 
 function getTarget(name, data) {
-  if (!data);
+  if (!data) return;
   const datapoints = data.result.response.map(item => {
     return [item.value, item.time];
   });
