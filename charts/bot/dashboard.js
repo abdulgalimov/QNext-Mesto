@@ -96,7 +96,7 @@ const dashboard = {
   "hideControls": true,
   "graphTooltip": false,
   "time": {
-    "from": "now-${query.period| notFound: 3d}",
+    "from": "now-"+(query.period||'3d'),
     "to": "now"
   },
   "title": dashboardTitle,
