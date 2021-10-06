@@ -1,5 +1,3 @@
-const {chatId} = qnext.getValue('request.query');
-const {chats} = qnext.getValue('globalVar');
 const query = qnext.getValue('query');
 
 const refId = {
@@ -93,9 +91,6 @@ function addPie(options) {
 }
 
 let dashboardTitle = 'Бот Mesto';
-if (chatId && chats[chatId]) {
-  dashboardTitle = chats[chatId].title;
-}
 const dashboard = {
   "editable": false,
   "hideControls": true,
