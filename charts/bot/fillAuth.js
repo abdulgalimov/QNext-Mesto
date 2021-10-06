@@ -13,10 +13,12 @@ const names = {
   rulesErr: 1008,
 };
 async function run() {
+  exports.run1 = 1;
   try {
     const tasksData = {};
 
     function createSql(name, param1) {
+      exports['run'+param1] = name;
       if (!steps || steps.includes(name)) {
         const options = {
           select: 'count() as value, (intDiv(toUInt32(createdDate), ' + divider + ') * ' + divider + ') * 1000 as time',
@@ -28,6 +30,7 @@ async function run() {
       }
     }
 
+    exports.run2 = 2;
     Object.keys(names).map(key => {
       createSql(key, names[key]);
     })
