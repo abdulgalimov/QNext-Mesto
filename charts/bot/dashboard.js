@@ -129,7 +129,7 @@ dashboard.panels.push({
     "x": 0,
     "y": 12,
     "w": 24,
-    "h": 8
+    "h": 10
   },
   "targets": [],
   "timeFrom": null,
