@@ -157,7 +157,7 @@ dashboard.panels.push({
     "x": 0,
     "y": 12,
     "w": 24,
-    "h": 9
+    "h": 15
   },
   "targets": [],
   "timeFrom": null,
