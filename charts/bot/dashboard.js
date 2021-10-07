@@ -145,6 +145,7 @@ dashboard.panels.push(helpPanel)
 async function run() {
   try {
     const helpText = await qnext.git.readFile(3, 'charts/bot/help.md', 'text');
+    exports.helpText = helpText;
     helpPanel.options.content = helpText.ok ? helpText.response.content : '';
   } catch (err) {
     exports.errMessage = err.message;
