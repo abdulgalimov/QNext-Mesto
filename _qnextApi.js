@@ -22,6 +22,9 @@ global.qnext = {
   customStats: {
     read: async (options) => {},
   },
+  git: {
+    readFile: async (repoIsd, filename, sourceType) => {},
+  },
   telegram: {
     api: async function (method, body) {}
   },
