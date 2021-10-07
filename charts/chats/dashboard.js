@@ -161,6 +161,7 @@ dashboard.panels.push({
     target: "topMembers",
     refId,
   }],
+  "transparent": true
 })
 
 const helpPanel = {
@@ -181,6 +182,7 @@ const helpPanel = {
   },
   "datasource": null
 };
+dashboard.panels.push(addRow(48, "Помощь"));
 dashboard.panels.push(helpPanel);
 
 async function run() {

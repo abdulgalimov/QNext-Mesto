@@ -140,6 +140,7 @@ const helpPanel = {
   },
   "datasource": null
 };
+dashboard.panels.push(addRow(12, "Помощь"));
 dashboard.panels.push(helpPanel)
 
 async function run() {
