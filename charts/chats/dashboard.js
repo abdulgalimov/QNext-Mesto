@@ -163,4 +163,36 @@ dashboard.panels.push({
   }],
 })
 
+const helpPanel = {
+  "type": "text",
+  "title": "",
+  "gridPos": {
+    "x": 0,
+    "y": 48,
+    "w": 24,
+    "h": 12
+  },
+  "targets": [],
+  "timeFrom": null,
+  "timeShift": null,
+  "options": {
+    "mode": "markdown",
+    "content": '',
+  },
+  "datasource": null
+};
+dashboard.panels.push(helpPanel);
+
+async function run() {
+  try {
+    const helpText = await qnext.git.readFile(3, 'charts/chats/help.md', 'text');
+    exports.helpText = helpText;
+    helpPanel.options.content = helpText.ok ? helpText.response.content : '';
+  } catch (err) {
+    exports.errMessage = err.message;
+  }
+}
+
+run().finally(qnext.onFinish);
+
 exports.dashboard = dashboard;
