@@ -166,8 +166,8 @@ dashboard.panels.push({
 })
 
 async function run() {
-  const helpText = await qnext.git.readFile(3, 'charts/bot/help.md', 'text');
-  exports.helpText = helpText;
+  // const helpText = await qnext.git.readFile(3, 'charts/bot/help.md', 'text');
+  // exports.helpText = helpText;
 }
 
 run().finally(qnext.onFinish);
