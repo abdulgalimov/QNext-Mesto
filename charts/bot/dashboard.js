@@ -165,4 +165,11 @@ dashboard.panels.push({
   "datasource": null
 })
 
+async function run() {
+  const helpText = await qnext.git.readFile(3, 'charts/bot/help.md', 'text');
+  exports.helpText = helpText;
+}
+
+run().finally(qnext.onFinish);
+
 exports.dashboard = dashboard;
