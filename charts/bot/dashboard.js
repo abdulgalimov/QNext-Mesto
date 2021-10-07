@@ -135,19 +135,11 @@ const helpText = `* startAuth: Старт авторизации
 
 ## steps
 Чтобы показать определенные шаги, укажите их в ссылке в параметр steps через запятую, например так
-\`\`\`
-
-https://qnext.app/bin/charts/8802/29/f44c5144b6a15d16e23f588cc1d620971a7418f5?steps=block,unblock
-
-\`\`\`
+\` https://qnext.app/bin/charts/8802/29/f44c5144b6a15d16e23f588cc1d620971a7418f5?steps=block,unblock \`
 ## divider
 С помощью параметра divider можно указать по какому временному промежутку группировать события,
 например если надо группировать по-суточно, укажите параметр divider=24h:
-\`\`\`
-
-https://qnext.app/bin/charts/8802/29/f44c5144b6a15d16e23f588cc1d620971a7418f5?divider=24h
-
-\`\`\`
+\` https://qnext.app/bin/charts/8802/29/f44c5144b6a15d16e23f588cc1d620971a7418f5?divider=24h \`
 `
 
 dashboard.panels.push({
