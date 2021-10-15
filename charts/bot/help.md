@@ -20,3 +20,8 @@ https://qnext.app/bin/charts/8802/29/f44c5144b6a15d16e23f588cc1d620971a7418f5?st
 ```
 https://qnext.app/bin/charts/8802/29/f44c5144b6a15d16e23f588cc1d620971a7418f5?divider=24h
 ```
+## Несколько параметров
+Если необходимо указать несколько параметров, разделить их нужно символом &, например так:
+```
+https://qnext.app/bin/charts/8802/29/f44c5144b6a15d16e23f588cc1d620971a7418f5?divider=24h&steps=block,unblock
+```
