@@ -32,8 +32,9 @@ async function run() {
   const body = {
     filter: {
       and: [{
-        Profession: {
-          id: selectedProfession.value[0].id,
+        property: 'Profession',
+        relation: {
+          contains: selectedProfession.value[0].id,
         }
       }]
     },
