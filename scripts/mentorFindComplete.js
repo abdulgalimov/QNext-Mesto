@@ -33,7 +33,7 @@ async function run() {
     filter: {
       and: [{
         property: 'Profession',
-        relation: {
+        id: {
           contains: selectedProfession.value[0].id,
         }
       }]
