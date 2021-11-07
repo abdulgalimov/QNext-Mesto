@@ -16,7 +16,7 @@ function callNotionApi(path, method, body) {
   const options = {
     method,
     headers: {
-      'Authorization': 'Bearer ' + secretKey,
+      'Authorization': 'Bearer ' + notionSecret,
       'Notion-Version': '2021-08-16',
       'Content-type': 'application/json',
     },
