@@ -40,7 +40,7 @@ async function run() {
     },
     page_size: 10,
   };
-  console.log('call', body);
+  console.log('call', JSON.stringify(body, null, 2));
   const findRes = await callNotionApi(path, 'POST', body);
   console.log('findRes', findRes);
 }
