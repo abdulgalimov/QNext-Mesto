@@ -44,6 +44,48 @@ async function run() {
   console.log('call', JSON.stringify(body, null, 2));
   const findRes = await callNotionApi(path, 'POST', body);
   console.log('findRes', findRes);
+  if (findRes.result.object === 'error') {
+    console.error('Error find mentors', findRes);
+    return sendMessage('Не удалось найти менторов, попробуйте позже')
+  }
+  const mentors = findRes.result.results||[];
+  const tasksList = mentors.map(mentor => {
+    const name = mentor.properties.Name.title[0].plain_text;
+    const exp = mentor.properties.exp.number;
+    const email = mentor.properties.Email.email;
+    const about = mentor.properties.About.rich_text[0].plain_text;
+    const currentPosition = mentor.properties['Current position'].rich_text[0].plain_text;
+    const telegramContact = mentor.properties['Telegram contact'].checkbox;
+    const telegramId = mentor.properties.id.number;
+    const telegramUsername = mentor.properties['Telegram username'].rich_text[0].plain_text;
+    //
+    const contactLine = [];
+    if (email) {
+      contactLine.push(email);
+    }
+    if (telegramContact) {
+      if (telegramUsername) {
+        contactLine.push(`@${telegramUsername}`);
+      } else {
+        contactLine.push(qnext.html.link('Telegram', `tg://user?id=${telegramId}`));
+      }
+    }
+    //
+    const message = `${name}
+Должность: ${currentPosition}
+Опыт: ${exp}
+О себе: ${about}
+Контакты: ${contactLine.join(' ')}`;
+    return sendMessage(message);
+  });
+  return qnext.tasks.parallel(tasksList);
+}
+
+function sendMessage(message) {
+  return qnext.telegram.api('sendMessage', {
+    chat_id: qnext.data.user.id,
+    text: message,
+  })
 }
 
 run().finally(qnext.onFinish);
