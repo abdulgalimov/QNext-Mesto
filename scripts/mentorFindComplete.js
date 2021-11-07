@@ -33,7 +33,7 @@ async function run() {
     filter: {
       and: [{
         Profession: {
-          id: selectedProfession.id,
+          id: selectedProfession.value[0].id,
         }
       }]
     },
