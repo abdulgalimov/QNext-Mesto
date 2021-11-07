@@ -27,8 +27,9 @@ function callNotionApi(path, method, body) {
   return qnext.fetch(url, options, {type: 'json'});
 }
 
+const mentorsDatabaseId = '095d6358-5ca8-4114-a427-a007a627a984';
 async function run() {
-  const path = `/databases/${relationProp.relationTableId}/query`;
+  const path = `/databases/${mentorsDatabaseId}/query`;
   const body = {
     filter: {
       and: [{
