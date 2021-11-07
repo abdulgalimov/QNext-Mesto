@@ -1,6 +1,6 @@
 
 const professionPropName = 'Target profession';
-const selectedProfession = qnext.getValue(`httpResponse.value.formData.values.${professionPropName}`, {});
+const selectedProfession = qnext.getValue(`httpResponse.value.formData.values.${professionPropName}.value.0`, {});
 console.log('selectedProfession', selectedProfession);
 
 const properties = qnext.getValue('httpResponse.value.form.schema.properties', []);
@@ -35,7 +35,7 @@ async function run() {
       and: [{
         property: 'Profession',
         relation: {
-          contains: selectedProfession.value[0].id,
+          contains: selectedProfession.id,
         }
       }]
     },
