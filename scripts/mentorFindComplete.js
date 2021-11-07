@@ -48,6 +48,7 @@ async function run() {
     console.error('Error find mentors', findRes);
     return sendMessage('Не удалось найти менторов, попробуйте позже')
   }
+  await sendMessage(`Поиск менторов по професии: ${selectedProfession.name}`);
   const mentors = findRes.result.results||[];
   const tasksList = mentors.map(mentor => {
     const name = mentor.properties.Name.title[0].plain_text;
@@ -71,7 +72,7 @@ async function run() {
       }
     }
     //
-    const message = `${name}
+    const message = `👤${name}
 Должность: ${currentPosition}
 Опыт: ${exp}
 О себе: ${about}
