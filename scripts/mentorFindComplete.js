@@ -31,9 +31,11 @@ async function run() {
   const path = `/databases/${relationProp.relationTableId}/query`;
   const body = {
     filter: {
-      Profession: {
-        id: selectedProfession.id,
-      }
+      and: [{
+        Profession: {
+          id: selectedProfession.id,
+        }
+      }]
     },
     page_size: 10,
   };
