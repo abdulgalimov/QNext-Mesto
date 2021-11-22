@@ -26,7 +26,7 @@ function addGraph(options) {
     "transparent": true,
     "yaxes": [
       {
-        "format": "locale",
+        "format": "none",
         "label": null,
         "logBase": 1,
         "max": null,
@@ -34,7 +34,7 @@ function addGraph(options) {
         "show": true
       },
       {
-        "format": "locale",
+        "format": "none",
         "label": null,
         "logBase": 1,
         "max": null,

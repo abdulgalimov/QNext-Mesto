@@ -4,9 +4,14 @@
 
 const targetData = qnext.getValue("requestBody.targets.0", {});
 const {refId, target} = targetData;
-const dateFrom = new Date(qnext.getValue("requestBody.range.from", new Date()));
-const dateTo = new Date(qnext.getValue("requestBody.range.to", new Date()));
 const rangeRaw = qnext.getValue("requestBody.range.raw");
+
+function getDate(key) {
+  const date = new Date(qnext.getValue(key, new Date()));
+  return qnext.date.toLocal(qnext.data.bot, date);
+}
+const dateFrom = getDate("requestBody.range.from");
+const dateTo = getDate("requestBody.range.to");
 
 const {chat, divider: dividerSource} = refId;
 exports.refData = refId;
