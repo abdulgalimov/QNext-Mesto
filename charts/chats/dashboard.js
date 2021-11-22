@@ -23,7 +23,10 @@ function addGraph(options) {
     "timeShift": null,
     "title": "",
     "type": "graph",
-    "transparent": true
+    "transparent": true,
+    yaxes: [{
+      "format": "none",
+    }]
   };
 }
 function addRow(y, title) {
