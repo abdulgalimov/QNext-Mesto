@@ -24,6 +24,24 @@ function addGraph(options) {
     "title": "",
     "type": "graph",
     "transparent": true,
+    "yaxes": [
+      {
+        "format": "none",
+        "label": null,
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true
+      },
+      {
+        "format": "none",
+        "label": null,
+        "logBase": 1,
+        "max": null,
+        "min": null,
+        "show": true
+      }
+    ],
   };
 }
 function addRow(y, title) {
