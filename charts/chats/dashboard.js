@@ -102,7 +102,7 @@ const dashboard = {
   "hideControls": true,
   "graphTooltip": false,
   "time": {
-    "from": "now-"+(query.period||'3d'),
+    "from": "now-"+(query.period||'7d'),
     "to": "now"
   },
   "title": dashboardTitle,
