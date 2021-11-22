@@ -24,9 +24,6 @@ function addGraph(options) {
     "title": "",
     "type": "graph",
     "transparent": true,
-    yaxes: [{
-      "format": "none",
-    }]
   };
 }
 function addRow(y, title) {
