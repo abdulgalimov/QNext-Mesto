@@ -149,12 +149,22 @@ authPanel.targets.push({
   refId,
 });
 
+const bargaugePanel = addBargauge({
+  y: 12,
+  h: 10,
+});
+bargaugePanel.targets.push({
+  target: "totalEvents",
+  refId,
+});
+dashboard.panels.push(bargaugePanel)
+
 const helpPanel = {
   "type": "text",
   "title": "",
   "gridPos": {
     "x": 0,
-    "y": 12,
+    "y": 22,
     "w": 24,
     "h": 15
   },
@@ -167,20 +177,8 @@ const helpPanel = {
   },
   "datasource": null
 };
-dashboard.panels.push(addRow(12, "Помощь"));
+dashboard.panels.push(addRow(22, "Помощь"));
 dashboard.panels.push(helpPanel)
-
-if (query.test) {
-  const bargaugePanel = addBargauge({
-    y: 27,
-    h: 10,
-  });
-  bargaugePanel.targets.push({
-    target: "totalEvents",
-    refId,
-  });
-  dashboard.panels.push(bargaugePanel)
-}
 
 async function run() {
   try {
