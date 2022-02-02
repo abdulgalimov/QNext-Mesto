@@ -109,7 +109,7 @@ function addBargauge(options) {
   return {
     type: 'bargauge',
     "gridPos": {x, y, w, h},
-    panels: [],
+    targets: [],
     defaults: {
       "thresholds": {
         "mode": "percentage",
