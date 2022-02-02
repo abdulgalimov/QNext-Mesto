@@ -1,4 +1,4 @@
-const {divider, where, steps} = qnext.getValue('localVar');
+const {divider, where, steps, target} = qnext.getValue('localVar');
 
 const targets = [];
 const names = {
@@ -17,11 +17,22 @@ async function run() {
 
   function createSql(name, param1) {
     if (!steps || steps.includes(name)) {
-      const options = {
-        select: 'count() as value, (intDiv(toUInt32(createdDate), ' + divider + ') * ' + divider + ') * 1000 as time',
-        where: where.time + ' param1 = ' + param1,
-        group: 'time',
-        order: 'time'
+      let options;
+      switch (target) {
+        case 'auth':
+          options = {
+            select: 'count() as value, (intDiv(toUInt32(createdDate), ' + divider + ') * ' + divider + ') * 1000 as time',
+            where: where.time + ' param1 = ' + param1,
+            group: 'time',
+            order: 'time'
+          }
+          break;
+        case 'totalEvents':
+          options = {
+            select: 'count() as value, max(createdDate) as time',
+            where: where.time + ' param1 = ' + param1,
+          }
+          break;
       }
       tasksData[name] = qnext.customStats.read(options);
     }
@@ -30,6 +41,7 @@ async function run() {
     createSql(key, names[key]);
   })
   const result = await qnext.tasks.parallel(tasksData);
+  console.log('result', result);
   Object.keys(names).map(key => {
     getTarget(key, result[key]);
   })
