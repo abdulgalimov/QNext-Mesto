@@ -41,7 +41,7 @@ async function run() {
     createSql(key, names[key]);
   })
   const result = await qnext.tasks.parallel(tasksData);
-  console.log('result', result);
+  console.log('result: '+target, result);
   Object.keys(names).map(key => {
     getTarget(key, result[key]);
   })
