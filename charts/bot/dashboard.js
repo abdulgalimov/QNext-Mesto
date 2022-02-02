@@ -101,6 +101,32 @@ function addPie(options) {
   }
 }
 
+function addBargauge(options) {
+  const x = options.x||0;
+  const y = options.y||0;
+  const w = options.w||24;
+  const h = options.h||12;
+  return {
+    type: 'bargauge',
+    "gridPos": {x, y, w, h},
+    defaults: {
+      "thresholds": {
+        "mode": "percentage",
+        "steps": [
+          {
+            "color": "red",
+            "value": null
+          },
+          {
+            "value": 10,
+            "color": "green"
+          }
+        ]
+      },
+    },
+  }
+}
+
 let dashboardTitle = 'Бот Mesto';
 const dashboard = {
   "editable": false,
@@ -142,6 +168,14 @@ const helpPanel = {
 };
 dashboard.panels.push(addRow(12, "Помощь"));
 dashboard.panels.push(helpPanel)
+
+if (query.test) {
+  const bargaugePanel = addBargauge({
+    y: 27,
+    h: 10,
+  });
+  dashboard.panels.push(bargaugePanel)
+}
 
 async function run() {
   try {
