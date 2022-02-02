@@ -174,6 +174,10 @@ if (query.test) {
     y: 27,
     h: 10,
   });
+  bargaugePanel.targets.push({
+    target: "totalEvents",
+    refId,
+  });
   dashboard.panels.push(bargaugePanel)
 }
 
