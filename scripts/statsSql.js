@@ -1,7 +1,7 @@
 
 let text = qnext.getValue('update.message.text', '');
 
-const reg = /^select\s+(?<who>^[;]+)\s+from\s+stats\s+where\s+(?<where>[^;]+);?$/;
+const reg = /^select\s+(?<who>^[;]+)\s+from\s+stats\s+where\s+(?<where>[^;]+);?$/ig;
 async function run() {
   if (!text) {
     exports.error = true;
