@@ -39,6 +39,7 @@ async function run() {
     const lines = [keys];
     let values = result.response;
     if (values.length > 20) values = values.slice(0, 20);
+    const spacesStr = '          ';
     values.map(item => {
       const line = keys.map((key, index) => {
         const value = item[key]
@@ -47,9 +48,14 @@ async function run() {
       })
       lines.push(line);
     })
+    lines.map(line => {
+      line.map((value, index) => {
+        const spacesCount = spaces[index];
+        line[index] = (spacesStr+value).substr(-spacesCount);
+      })
+    })
     console.log('values', keys, spaces, lines);
   }
-
 }
 
 run().finally(qnext.onFinish);
