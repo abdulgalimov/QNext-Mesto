@@ -13,15 +13,15 @@ async function run() {
       group: 'time',
       order: 'time'
     }),
-    users: qnext.customStats.read({
+    users: !where.user ? qnext.customStats.read({
       select: 'count(distinct param3) as value, (intDiv(toUInt32(createdDate), '+divider+') * '+divider+') * 1000 as time',
       where: where.time+' param1 = 2003 and param2 != -1001501275697 '+where.chat,
       group: 'time',
       order: 'time'
-    }),
+    }) : null,
   });
   targets.push(getTarget('Сообщения', messages));
-  targets.push(getTarget('Уникальные пользователи', users));
+  if (users) targets.push(getTarget('Уникальные пользователи', users));
   exports.targets = targets;
 }
 
