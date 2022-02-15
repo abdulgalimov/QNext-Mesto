@@ -1,10 +1,11 @@
-const {chatId} = qnext.getValue('request.query');
+const {chatId, userId} = qnext.getValue('request.query');
 const {chats} = qnext.getValue('globalVar');
 const query = qnext.getValue('query');
 
 const refId = {
   chat: query.chatId ? query.chatId : 'all',
   divider: query.divider ? query.divider : 'auto',
+  userId: userId||0,
 }
 
 let idCount = 1;

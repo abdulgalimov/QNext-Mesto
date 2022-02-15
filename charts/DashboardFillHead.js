@@ -13,7 +13,7 @@ function getDate(key) {
 const dateFrom = getDate("requestBody.range.from");
 const dateTo = getDate("requestBody.range.to");
 
-const {chat, divider: dividerSource} = refId;
+const {userId, chat, divider: dividerSource} = refId;
 exports.refData = refId;
 
 const timeFrom = Math.floor(dateFrom.getTime()/1000);
@@ -54,7 +54,8 @@ const whereTime = [
 exports.viewChat = chat;
 exports.where = {
   time: whereTime.join(' AND ')+' AND ',
-  chat: chat !== 'all' ? ' AND param2='+chat : ''
+  chat: chat !== 'all' ? ' AND param2='+chat : '',
+  user: userId  ? ' AND param3='+userId : '',
 };
 exports.target = target;
 exports.timeFrom = timeFrom;
