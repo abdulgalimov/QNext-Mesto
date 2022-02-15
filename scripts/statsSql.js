@@ -48,11 +48,12 @@ async function run() {
       })
       lines.push(line);
     })
-    lines.map(line => {
+    lines.map((line, k) => {
       line.map((value, index) => {
         const spacesCount = spaces[index];
         line[index] = (spacesStr+value).substr(-spacesCount);
       })
+      lines[k] = line.join(' | ');
     })
     console.log('values', keys, spaces, lines);
     exports.message = lines.join('\n');
