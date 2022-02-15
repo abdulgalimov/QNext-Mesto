@@ -2,8 +2,6 @@
  * generalTrigger -> DashboardFillHead
  */
 
-console.log('-------------- fill head')
-
 const targetData = qnext.getValue("requestBody.targets.0", {});
 const {refId, target} = targetData;
 const rangeRaw = qnext.getValue("requestBody.range.raw");

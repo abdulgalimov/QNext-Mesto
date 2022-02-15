@@ -1,11 +1,12 @@
-const {chatId, userId} = qnext.getValue('request.query');
+const {chatId} = qnext.getValue('request.query');
 const {chats} = qnext.getValue('globalVar');
 const query = qnext.getValue('query');
+const user = qnext.data.localVar.user;
 
 const refId = {
   chat: query.chatId ? query.chatId : 'all',
   divider: query.divider ? query.divider : 'auto',
-  userId: userId||0,
+  userId: user ? user.id :0,
 }
 
 let idCount = 1;
@@ -115,6 +116,9 @@ function addPie(options) {
 let dashboardTitle = 'Чаты Mesto';
 if (chatId && chats[chatId]) {
   dashboardTitle = chats[chatId].title;
+}
+if (user) {
+  dashboardTitle += '👤'+user.name + (user.username ? '@'+user.username : '');
 }
 const dashboard = {
   "editable": false,
