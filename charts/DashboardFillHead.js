@@ -2,13 +2,15 @@
  * generalTrigger -> DashboardFillHead
  */
 
+console.log('-------------- fill head')
+
 const targetData = qnext.getValue("requestBody.targets.0", {});
 const {refId, target} = targetData;
 const rangeRaw = qnext.getValue("requestBody.range.raw");
 
 function getDate(key) {
   const date = new Date(qnext.getValue(key, new Date()));
-  return qnext.date.toLocal(qnext.data.bot, date);
+  return qnext.date.toLocal(date);
 }
 const dateFrom = getDate("requestBody.range.from");
 const dateTo = getDate("requestBody.range.to");
@@ -55,7 +57,7 @@ exports.viewChat = chat;
 exports.where = {
   time: whereTime.join(' AND ')+' AND ',
   chat: chat !== 'all' ? ' AND param2='+chat : '',
-  user: userId  ? ' AND param3='+userId : '',
+  userId: userId||'',
 };
 exports.target = target;
 exports.timeFrom = timeFrom;
