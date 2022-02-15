@@ -2,12 +2,12 @@ const {divider, where} = qnext.getValue('localVar');
 
 const targets = [];
 async function run() {
-  const totalCount = await qnext.customStats.read({
-    select: 'count() as value',
+  const totalUsers = await qnext.customStats.read({
+    select: 'count(distinct param3) as value',
     where: where.time+' param1 = 2009 ',
   });
-  console.log('totalCount', totalCount);
-  targets.push(getTarget('Всего Spasibo', totalCount));
+  console.log('totalUsers', totalUsers);
+  targets.push(getTarget('Всего Пользователей', totalUsers));
   exports.targets = targets;
 }
 
