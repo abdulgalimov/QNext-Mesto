@@ -57,7 +57,7 @@ exports.viewChat = chat;
 exports.where = {
   time: whereTime.join(' AND ')+' AND ',
   chat: chat !== 'all' ? ' AND param2='+chat : '',
-  userId: userId||'',
+  user: userId ? ` AND param3=${userId} ` : '',
 };
 exports.target = target;
 exports.timeFrom = timeFrom;
