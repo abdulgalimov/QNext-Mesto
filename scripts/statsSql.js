@@ -16,7 +16,8 @@ async function run() {
   const exec = reg.exec(text);
   console.log('exec', exec);
   if (!exec) {
-    exports.error = true;
+    exports.message = `Не верный формат запроса, напишите запрос в формате:
+select ... from stats where ...`;
     return;
   }
   const {who, where} = exec.groups;
