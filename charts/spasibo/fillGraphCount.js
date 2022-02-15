@@ -4,11 +4,11 @@ const targets = [];
 async function run() {
   const counts = qnext.customStats.read({
     select: 'count() as value, (intDiv(toUInt32(createdDate), '+divider+') * '+divider+') * 1000 as time',
-    where: `${where.time} param1 = 2009 and param2 != -1001501275697 ${where.chat} ${where.user}`,
+    where: `${where.time} param1 = 2009 and param2 != -1001501275697 ${where.user}`,
     group: 'time',
     order: 'time'
   })
-  targets.push(getTarget('Количество Spasibo', counts));
+  targets.push(getTarget('Spasibo', counts));
   exports.targets = targets;
 }
 
