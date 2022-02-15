@@ -3,7 +3,7 @@ const {divider, where} = qnext.getValue('localVar');
 const targets = [];
 async function run() {
   const totalCount = await qnext.customStats.read({
-    select: 'count() as value, createdDate as time',
+    select: 'count() as value',
     where: where.time+' param1 = 2009 ',
   });
   console.log('totalCount', totalCount);
