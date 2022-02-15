@@ -55,6 +55,7 @@ async function run() {
       })
     })
     console.log('values', keys, spaces, lines);
+    exports.message = lines.join('\n');
   }
 }
 
