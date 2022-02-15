@@ -6,6 +6,7 @@ const ignoreKeys = {
   botId: 1,
   version: 1,
 };
+const maxResultCount = 20;
 async function run() {
   if (!text) {
     exports.error = true;
@@ -38,7 +39,10 @@ async function run() {
       });
     const lines = [keys];
     let values = result.response;
-    if (values.length > 20) values = values.slice(0, 20);
+    const isLongResult = values.length > maxResultCount;
+    if (isLongResult) {
+      values = values.slice(0, maxResultCount);
+    }
     const spacesStr = '          ';
     values.map(item => {
       const line = keys.map((key, index) => {
@@ -56,7 +60,9 @@ async function run() {
       lines[k] = line.join(' | ');
     })
     console.log('values', keys, spaces, lines);
-    exports.message = lines.join('\n');
+    let message = lines.join('\n');
+    if (isLongResult) message = `${message}\n... more ${result.response.length - maxResultCount}`
+    exports.message = message;
   }
 }
 
