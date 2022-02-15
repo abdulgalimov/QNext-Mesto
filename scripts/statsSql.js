@@ -63,6 +63,8 @@ async function run() {
     let message = lines.join('\n');
     if (isLongResult) message = `${message}\n... more ${result.response.length - maxResultCount}`
     exports.message = message;
+  } else {
+    exports.message = result.error && result.error.message ? result.error.message : 'Ошибка запроса';
   }
 }
 
