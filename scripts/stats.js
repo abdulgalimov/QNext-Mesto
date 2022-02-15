@@ -34,7 +34,7 @@ function run() {
           if (chat.id < 0) {
             if (reply_to_message && reply_to_message.from && reply_to_message.from.id === TelegramPosterId) {
               action = Actions.CHANNEL_POST_COMMENT;
-              param4 = reply_to_message.forward_from_chat ? reply_to_message.forward_from_chat.id : 0;
+              param4 = reply_to_message.forward_from_message_id||0;
             } else {
               action = Actions.CHAT_MESSAGE;
             }
