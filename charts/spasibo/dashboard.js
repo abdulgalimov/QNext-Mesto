@@ -166,7 +166,7 @@ const helpPanel = {
   },
   "datasource": null
 };
-dashboard.panels.push(addRow(48, "Помощь"));
+dashboard.panels.push(addRow(20, "Помощь"));
 dashboard.panels.push(helpPanel);
 
 async function run() {
