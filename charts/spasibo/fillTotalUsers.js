@@ -4,7 +4,7 @@ const targets = [];
 async function run() {
   const totalUsers = await qnext.customStats.read({
     select: 'count(distinct param3) as value',
-    where: where.time+' param1 = 2009 ',
+    where: where.time+' param1 = 2009 '+where.user,
   });
   console.log('totalUsers', totalUsers);
   targets.push(getTarget('Всего Пользователей', totalUsers));
