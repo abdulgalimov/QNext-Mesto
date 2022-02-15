@@ -3,7 +3,7 @@ const {divider, where} = qnext.getValue('localVar');
 const targets = [];
 async function run() {
   function getWhere(param1) {
-    return `${where.time} param1 = ${param1} and param2 != -1001501275697 ${where.user} ${where.chat}`;
+    return `${where.time} param1 = ${param1} and param2 != -1001501275697 ${where.chat} ${where.user}`;
   }
 
   const {messages, users} = await qnext.tasks.parallel({

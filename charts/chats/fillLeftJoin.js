@@ -5,19 +5,19 @@ async function run() {
   const {join, left, kick} = await qnext.tasks.parallel({
     join: qnext.customStats.read({
       select: 'count() as value, (intDiv(toUInt32(createdDate), '+divider+') * '+divider+') * 1000 as time',
-      where: where.time + ' param1 = 2001 '+where.chat,
+      where: where.time + ' param1 = 2001 '+where.chat + where.user,
       group: 'time',
       order: 'time'
     }),
     left: qnext.customStats.read({
       select: 'count() as value, (intDiv(toUInt32(createdDate), '+divider+') * '+divider+') * 1000 as time',
-      where: where.time+' param1 = 2002 '+where.chat,
+      where: where.time+' param1 = 2002 '+where.chat + where.user,
       group: 'time',
       order: 'time'
     }),
     kick: qnext.customStats.read({
       select: 'count() as value, (intDiv(toUInt32(createdDate), '+divider+') * '+divider+') * 1000 as time',
-      where: where.time+' param1 = 2008 '+where.chat,
+      where: where.time+' param1 = 2008 '+where.chat + where.user,
       group: 'time',
       order: 'time'
     })
