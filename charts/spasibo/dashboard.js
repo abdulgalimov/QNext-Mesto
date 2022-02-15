@@ -127,10 +127,17 @@ const dashboard = {
   "panels": []
 }
 
-const membersCountStat = addStat({x: 0, w: 10, title: 'Всего Spasibo'});
-dashboard.panels.push(membersCountStat);
-membersCountStat.targets.push({
+const totalCount = addStat({x: 0, w: 12, title: 'Всего Spasibo'});
+dashboard.panels.push(totalCount);
+totalCount.targets.push({
   target: "totalCount",
+  refId,
+})
+
+const totalUsers = addStat({x: 12, w: 12, title: 'Всего Пользователей'});
+dashboard.panels.push(totalUsers);
+totalUsers.targets.push({
+  target: "totalUsers",
   refId,
 })
 
