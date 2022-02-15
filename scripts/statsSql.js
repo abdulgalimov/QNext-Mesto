@@ -17,7 +17,7 @@ async function run() {
   console.log('exec', exec);
   if (!exec) {
     exports.message = `Не верный формат запроса, напишите запрос в формате:
-select ... from stats where ...`;
+${qnext.html.pre('select ... from stats where ...')}`;
     return;
   }
   const {who, where} = exec.groups;
