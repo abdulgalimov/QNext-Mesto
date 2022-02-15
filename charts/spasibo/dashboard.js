@@ -1,5 +1,3 @@
-const {chatId} = qnext.getValue('request.query');
-const {chats} = qnext.getValue('globalVar');
 const query = qnext.getValue('query');
 const user = qnext.data.localVar.user;
 
@@ -114,9 +112,6 @@ function addPie(options) {
 }
 
 let dashboardTitle = 'Чат Spasibo';
-if (chatId && chats[chatId]) {
-  dashboardTitle = chats[chatId].title;
-}
 if (user) {
   dashboardTitle += '👤'+user.name + (user.username ? '@'+user.username : '');
 }
