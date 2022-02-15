@@ -130,14 +130,14 @@ const dashboard = {
 const membersCountStat = addStat({x: 0, w: 10, title: 'Всего Spasibo'});
 dashboard.panels.push(membersCountStat);
 membersCountStat.targets.push({
-  target: "membersCountValue",
+  target: "totalCount",
   refId,
 })
 
 const membersCountPanel = addGraph({y: 10});
 dashboard.panels.push(membersCountPanel);
 membersCountPanel.targets.push({
-  target: "membersCount",
+  target: "graphCount",
   refId,
 });
 
