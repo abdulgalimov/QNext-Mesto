@@ -1,6 +1,7 @@
 
 const {user, formResult} = qnext.data;
 const {type, housing, psychological, documents, humanitarian, medical, transport, tg, contacts} = formResult.values;
+const {italic} = qnext.html;
 
 let message;
 switch (type) {
@@ -12,7 +13,6 @@ switch (type) {
     break;
 }
 
-const {italic} = qnext.html;
 function addLine(key, value) {
   if (!value) return;
   message += `\n${italic(key)}: ${value}`;
