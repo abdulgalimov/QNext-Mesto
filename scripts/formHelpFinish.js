@@ -39,11 +39,11 @@ let tags = [];
 switch (type) {
   case 'Могу помочь':
     message = `💙 Могу помочь.`;
-    splitter = '🔵';
+    splitter = '🔹';
     break;
   case 'Нужна помощь':
     message = `❤️ Нужна помощь.`;
-    splitter = '🔴';
+    splitter = '🔺';
     break;
 }
 
