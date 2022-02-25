@@ -34,13 +34,16 @@ const info = {
 };
 
 let message;
+let splitter;
 let tags = [];
 switch (type) {
   case 'Могу помочь':
     message = `💙 Могу помочь.`;
+    splitter = '🔵';
     break;
   case 'Нужна помощь':
     message = `❤️ Нужна помощь.`;
+    splitter = '🔴';
     break;
 }
 
@@ -49,7 +52,7 @@ function addLine(type) {
   const {key, tag} = typeData;
   const value = formResult.values[type];
   if (!value) return;
-  message += `\n${italic(key)}: ${value}`;
+  message += `\n${splitter}${italic(key)}: ${value}`;
   if (tag) tags.push(tag);
 }
 addLine('housing');
