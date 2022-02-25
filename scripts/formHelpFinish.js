@@ -1,32 +1,62 @@
 
 const {user, formResult} = qnext.data;
-const {type, housing, psychological, documents, humanitarian, medical, transport, tg, contacts} = formResult.values;
+const {type, tg} = formResult.values;
 const {italic} = qnext.html;
 
 const info = {
   housing: {
     key: 'С жильем',
-    tag: '#жилье'
+    need: {
+      tag: '#требуется_жилье',
+    },
+    can: {
+      tag: '#помогу_с_жильем',
+    }
   },
   psychological: {
     key: 'Психологическая помощь',
-    tag: '#психологическая_помощь'
+    need: {
+      tag: '#требуется_психологическая_помощь',
+    },
+    can: {
+      tag: '#помогу_с_психологической_помощью',
+    }
   },
   documents: {
     key: 'Документы и юридическая помощь',
-    tag: '#документы #юридическая_помощь'
+    need: {
+      tag: '#требуется_юридическая_помощь',
+    },
+    can: {
+      tag: '#помогу_с_юридической_помощью',
+    }
   },
   humanitarian: {
     key: 'Гуманитарная помощь',
-    tag: '#гуманитарная_помощь'
+    need: {
+      tag: '#требуется_гуманитарная_помощь',
+    },
+    can: {
+      tag: '#помогу_с_гуманитарной_помощью',
+    }
   },
   medical: {
     key: 'Медицинская помощь',
-    tag: '#медицинская_помощь'
+    need: {
+      tag: '#требуется_медицинская_помощь',
+    },
+    can: {
+      tag: '#помогу_с_медицинской_помощью',
+    }
   },
   transport: {
     key: 'Транспортная помощь',
-    tag: '#транспортная_помощь'
+    need: {
+      tag: '#требуется_транспортная_помощь',
+    },
+    can: {
+      tag: '#помогу_с_транспортом',
+    }
   },
   contacts: {
     key: 'Контакты',
@@ -36,24 +66,30 @@ const info = {
 let message;
 let splitter;
 let tags = [];
+let requestType;
 switch (type) {
   case 'Могу помочь':
     message = `💙 Могу помочь.`;
     splitter = '🔹';
+    requestType = 'can';
     break;
   case 'Нужна помощь':
     message = `❤️ Нужна помощь.`;
     splitter = '🔺';
+    requestType = 'need';
     break;
 }
 
 function addLine(type) {
   const typeData = info[type];
-  const {key, tag} = typeData;
+  const {key} = typeData;
   const value = formResult.values[type];
   if (!value) return;
   message += `\n${splitter}${italic(key)}: ${value}`;
-  if (tag) tags.push(tag);
+  //
+  if (typeData[requestType] && typeData[requestType].tag) {
+    tags.push(typeData[requestType].tag);
+  }
 }
 addLine('housing');
 addLine('psychological');
