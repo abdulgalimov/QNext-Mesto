@@ -64,8 +64,10 @@ addLine('transport');
 addLine('contacts');
 
 if (tg === 'Да') {
+  const name = [user.first_name||'', user.last_name||''].join(' ').trim();
+  const user = qnext.html.link(name, qnext.urls.user(user));
   message = `${message}
-${qnext.urls.user(user)}`
+${user}`;
 }
 
 if (tags.length) {
