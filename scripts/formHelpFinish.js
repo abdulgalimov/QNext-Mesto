@@ -3,45 +3,72 @@ const {user, formResult} = qnext.data;
 const {type, housing, psychological, documents, humanitarian, medical, transport, tg, contacts} = formResult.values;
 const {italic} = qnext.html;
 
+const info = {
+  housing: {
+    key: 'С жильем',
+    tag: '#жилье'
+  },
+  psychological: {
+    key: 'Психологическая помощь',
+    tag: '#психологическая_помощь'
+  },
+  documents: {
+    key: 'Документы и юридическая помощь',
+    tag: '#документы #юридическая_помощь'
+  },
+  humanitarian: {
+    key: 'Гуманитарная помощь',
+    tag: '#гуманитарная_помощь'
+  },
+  medical: {
+    key: 'Медицинская помощь',
+    tag: '#медицинская_помощь'
+  },
+  transport: {
+    key: 'Транспортная помощь',
+    tag: '#транспортная_помощь'
+  },
+  contacts: {
+    key: 'Контакты',
+  }
+};
+
 let message;
+let tags = [];
 switch (type) {
   case 'Могу помочь':
-    buildCanHelp();
+    message = `💙 Могу помочь.`;
     break;
   case 'Нужна помощь':
-    buildNeedHelp();
+    message = `❤️ Нужна помощь.`;
     break;
 }
 
-function addLine(key, value) {
+function addLine(type) {
+  const typeData = info[type];
+  const {key, tag} = typeData;
+  const value = formResult.values[type];
   if (!value) return;
   message += `\n${italic(key)}: ${value}`;
+  if (tag) tags.push(tag);
 }
-function buildCanHelp() {
-  message = `💙 Могу помочь.`;
-  addLine('С жильем', housing);
-  addLine('Психологическая помощь', psychological);
-  addLine('Документы и юридическая помощь', documents);
-  addLine('Гуманитарная помощь', humanitarian);
-  addLine('Медицинская помощь', medical);
-  addLine('Транспортная помощь', transport);
-  addLine('Контакты', contacts);
-}
-
-function buildNeedHelp() {
-  message = `❤️ Нужна помощь.`;
-  addLine('С жильем', housing);
-  addLine('Психологическая помощь', psychological);
-  addLine('Документы и юридическая помощь', documents);
-  addLine('Гуманитарная помощь', humanitarian);
-  addLine('Медицинская помощь', medical);
-  addLine('Транспортная помощь', transport);
-  addLine('Контакты', contacts);
-}
+addLine('housing');
+addLine('psychological');
+addLine('documents');
+addLine('humanitarian');
+addLine('medical');
+addLine('transport');
+addLine('contacts');
 
 if (tg === 'Да') {
   message = `${message}
 ${qnext.urls.user(user)}`
+}
+
+if (tags.length) {
+  message = `${message}
+
+${tags.join(' ')}`
 }
 
 
