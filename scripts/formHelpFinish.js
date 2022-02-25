@@ -63,6 +63,9 @@ const info = {
   },
   location: {
     key: 'Местоположение',
+  },
+  comments: {
+    key: 'Комментарии',
   }
 };
 
@@ -102,6 +105,7 @@ addLine('medical');
 addLine('transport');
 addLine('location');
 addLine('contacts');
+addLine('comments');
 
 if (tg === 'Да') {
   const userText = qnext.html.link(user.name, qnext.urls.user(user));
