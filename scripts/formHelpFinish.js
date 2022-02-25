@@ -60,6 +60,9 @@ const info = {
   },
   contacts: {
     key: 'Контакты',
+  },
+  location: {
+    key: 'Местоположение',
   }
 };
 
@@ -97,6 +100,7 @@ addLine('documents');
 addLine('humanitarian');
 addLine('medical');
 addLine('transport');
+addLine('location');
 addLine('contacts');
 
 if (tg === 'Да') {
