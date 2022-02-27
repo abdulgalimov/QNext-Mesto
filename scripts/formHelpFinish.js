@@ -85,12 +85,19 @@ switch (type) {
     requestType = 'need';
     break;
 }
+const doc = {
+  type: requestType,
+};
 
 function addLine(type) {
   const typeData = info[type];
   const {key} = typeData;
   const value = formResult.values[type];
-  if (!value) return;
+  if (!value) {
+    doc[type] = [];
+    return;
+  }
+  doc[type] = value.split(',');
   message += `\n${splitter}${italic(key)}: ${value}`;
   //
   if (typeData[requestType] && typeData[requestType].tag) {
@@ -121,3 +128,4 @@ ${tags.join(' ')}`
 
 
 exports.message = message;
+exports.doc = doc;
