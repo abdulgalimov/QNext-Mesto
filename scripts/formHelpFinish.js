@@ -3,7 +3,7 @@ const {user, formResult} = qnext.data;
 const {givejob, jobtype, joblocation, jobscope, jobabout, type, tg} = formResult.values;
 const {italic} = qnext.html;
 
-const vacancyurl = formResult.data.vacancyurl ? formResult.data.vacancyurl.value : null;
+const vacancyurl = formResult.data.vacancyurl ? formResult.data.vacancyurl.text : null;
 
 const info = {
   housing: {
