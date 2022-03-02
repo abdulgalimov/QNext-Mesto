@@ -84,6 +84,13 @@ const info = {
   }
 };
 
+function listToArr(str) {
+  return str
+    .split(',')
+    .map(value => value.trim())
+    .filter(value => !!value);
+}
+
 let message;
 let splitter;
 let tags = [];
@@ -112,7 +119,7 @@ function addLine(type) {
     doc[type] = [];
     return;
   }
-  doc[type] = value.split(',');
+  doc[type] = listToArr(value);
   message += `\n${splitter}${italic(key)}: ${value}`;
   //
   if (typeData[requestType] && typeData[requestType].tag) {
@@ -150,7 +157,7 @@ if (givejob === 'Да') {
       break;
   }
   if (jobscope) {
-    doc['jobscope'] = jobscope.split(',');
+    doc['jobscope'] = listToArr(jobscope);
     title = `${title}
     Сфера: ${jobscope}`;
   }
