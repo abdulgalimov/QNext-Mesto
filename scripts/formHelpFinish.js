@@ -1,6 +1,6 @@
 
 const {user, formResult} = qnext.data;
-const {givejob, jobtype, joblocation, jobscope, jobabout, type, tg} = formResult.values;
+const {givejob, jobtype, joblocation, jobscope, jobabout, type} = formResult.values;
 const {italic} = qnext.html;
 
 const vacancyurl = formResult.data.vacancyurl ? formResult.data.vacancyurl.text : null;
@@ -174,12 +174,6 @@ if (givejob === 'Да') {
 }
 
 addLine('comments');
-
-if (tg === 'Да') {
-  const userText = qnext.html.link(user.name, qnext.urls.user(user));
-  message = `${message}
-${userText}`;
-}
 
 if (tags.length) {
   message = `${message}
