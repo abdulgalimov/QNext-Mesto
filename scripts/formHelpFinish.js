@@ -124,17 +124,21 @@ if (givejob === 'Да') {
   let title;
   switch (jobtype) {
     case 'Удаленно':
+      doc['jobtype'] = 'online';
       title = 'Готов предоставить удаленную работу';
       break;
     case 'Локально':
+      doc['jobtype'] = 'local';
       title = 'Готов предоставить локальную работу в '+joblocation;
       break;
   }
   if (jobscope) {
+    doc['jobscope'] = jobscope.split(',');
     title = `${title}
-  Сфера: ${jobscope.join(', ')}`;
+  Сфера: ${jobscope}`;
   }
   if (jobabout) {
+    doc['jobabout'] = jobabout;
     title = `${title}
   Описание: ${jobabout}`;
   }
