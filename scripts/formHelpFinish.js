@@ -1,6 +1,6 @@
 
 const {user, formResult} = qnext.data;
-const {givejob, jobtype, joblocation, jobscope, jobabout, type, tg} = formResult.values;
+const {givejob, jobtype, joblocation, jobscope, jobabout, vacancyurl, type, tg} = formResult.values;
 const {italic} = qnext.html;
 
 const info = {
@@ -68,10 +68,16 @@ const info = {
     key: 'Комментарии',
   },
   findjob: {
-    key: 'Найти работу'
+    key: 'Найти работу',
+    can: {
+      tag: '#помогу_найти_работу',
+    }
   },
   givejob: {
-    key: 'Найти работу'
+    key: 'Найти работу',
+    can: {
+      tag: '#предоставлю_работу',
+    }
   }
 };
 
@@ -121,6 +127,7 @@ addLine('medical');
 addLine('findjob');
 
 if (givejob === 'Да') {
+  tags.push(info.givejob.can.tag);
   let title;
   switch (jobtype) {
     case 'Удаленно':
@@ -143,6 +150,12 @@ if (givejob === 'Да') {
   Описание: ${jobabout}`;
   }
   message += `\n${canIcon}${title}`;
+  //
+  if (vacancyurl) {
+    doc['vacancyurl'] = vacancyurl;
+    const vacancyText = qnext.html.link('Ссылка на вакансию', )vacancyurl;
+    message += `\n${canIcon}${vacancyText}.`;
+  }
 }
 
 addLine('comments');
