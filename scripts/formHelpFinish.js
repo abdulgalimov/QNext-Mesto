@@ -66,6 +66,12 @@ const info = {
   },
   relocation: {
     key: 'Релокация',
+    need: {
+      tag: '#требуется_релокация',
+    },
+    can: {
+      tag: '#помогу_с_релокацией',
+    }
   },
   comments: {
     key: 'Комментарии',
@@ -74,10 +80,13 @@ const info = {
     key: 'Найти работу',
     can: {
       tag: '#помогу_найти_работу',
-    }
+    },
   },
   givejob: {
     key: 'Найти работу',
+    need: {
+      tag: '#ищу_работу',
+    },
     can: {
       tag: '#предоставлю_работу',
     }
@@ -136,7 +145,9 @@ addLine('medical');
 addLine('findjob');
 
 if (givejob === 'Да') {
-  tags.push(info.givejob.can.tag);
+  if (info.givejob[requestType] && info.givejob[requestType].tag) {
+    tags.push(info.givejob[requestType].tag);
+  }
   let title;
   switch (jobtype) {
     case 'Удаленно':
