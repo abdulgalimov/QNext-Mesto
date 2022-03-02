@@ -144,12 +144,12 @@ if (givejob === 'Да') {
   if (jobscope) {
     doc['jobscope'] = jobscope.split(',');
     title = `${title}
-  Сфера: ${jobscope}`;
+    Сфера: ${jobscope}`;
   }
   if (jobabout) {
     doc['jobabout'] = jobabout;
     title = `${title}
-  Описание: ${jobabout}`;
+    Описание: ${jobabout}`;
   }
   message += `\n${canIcon}${title}`;
   //
