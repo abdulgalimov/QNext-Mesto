@@ -1,6 +1,6 @@
 
 const {user, formResult} = qnext.data;
-const {type, tg} = formResult.values;
+const {givejob, jobtype, joblocation, jobscope, jobabout, type, tg} = formResult.values;
 const {italic} = qnext.html;
 
 const info = {
@@ -58,17 +58,24 @@ const info = {
       tag: '#помогу_с_транспортом',
     }
   },
-  contacts: {
-    key: 'Контакты',
-  },
   location: {
     key: 'Местоположение',
   },
+  relocation: {
+    key: 'Релокация',
+  },
   comments: {
     key: 'Комментарии',
+  },
+  findjob: {
+    key: 'Найти работу'
+  },
+  givejob: {
+    key: 'Найти работу'
   }
 };
 
+const canIcon = '🔹';
 let message;
 let splitter;
 let tags = [];
@@ -76,7 +83,7 @@ let requestType;
 switch (type) {
   case 'Могу помочь':
     message = `💙 Могу помочь.`;
-    splitter = '🔹';
+    splitter = canIcon;
     requestType = 'can';
     break;
   case 'Нужна помощь':
@@ -104,14 +111,36 @@ function addLine(type) {
     tags.push(typeData[requestType].tag);
   }
 }
+addLine('location');
+addLine('relocation');
 addLine('housing');
 addLine('psychological');
-addLine('documents');
-addLine('humanitarian');
+addLine('legal');
+addLine('social');
 addLine('medical');
-addLine('transport');
-addLine('location');
-addLine('contacts');
+addLine('findjob');
+
+if (givejob === 'Да') {
+  let title;
+  switch (jobtype) {
+    case 'Удаленно':
+      title = 'Готов предоставить удаленную работу';
+      break;
+    case 'Локально':
+      title = 'Готов предоставить локальную работу в '+joblocation;
+      break;
+  }
+  if (jobscope) {
+    title = `${title}
+  Сфера: ${jobscope.join(', ')}`;
+  }
+  if (jobabout) {
+    title = `${title}
+  Описание: ${jobabout}`;
+  }
+  message += `\n${canIcon}${title}`;
+}
+
 addLine('comments');
 
 if (tg === 'Да') {
