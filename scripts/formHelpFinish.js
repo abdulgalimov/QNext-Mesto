@@ -1,7 +1,9 @@
 
 const {user, formResult} = qnext.data;
-const {givejob, jobtype, joblocation, jobscope, jobabout, vacancyurl, type, tg} = formResult.values;
+const {givejob, jobtype, joblocation, jobscope, jobabout, type, tg} = formResult.values;
 const {italic} = qnext.html;
+
+const vacancyurl = formResult.data.vacancyurl ? formResult.data.vacancyurl.value : null;
 
 const info = {
   housing: {
@@ -153,11 +155,7 @@ if (givejob === 'Да') {
   //
   if (vacancyurl) {
     doc['vacancyurl'] = vacancyurl;
-    let url = vacancyurl;
-    if (url.indexOf('http') === -1) {
-      url = 'https://'+url;
-    }
-    const vacancyText = qnext.html.link('Ссылка на вакансию', url);
+    const vacancyText = qnext.html.link('Ссылка на вакансию', vacancyurl);
     message += `\n${canIcon}${vacancyText}.`;
   }
 }
