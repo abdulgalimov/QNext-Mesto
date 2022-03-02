@@ -4,6 +4,7 @@ const {givejob, jobtype, joblocation, jobscope, jobabout, type, tg} = formResult
 const {italic} = qnext.html;
 
 const vacancyurl = formResult.data.vacancyurl ? formResult.data.vacancyurl.text : null;
+const resumeurl = formResult.data.resumeurl ? formResult.data.resumeurl.text : null;
 
 const info = {
   housing: {
@@ -83,7 +84,6 @@ const info = {
   }
 };
 
-const canIcon = '🔹';
 let message;
 let splitter;
 let tags = [];
@@ -91,7 +91,7 @@ let requestType;
 switch (type) {
   case 'Могу помочь':
     message = `💙 Могу помочь.`;
-    splitter = canIcon;
+    splitter = '🔹';
     requestType = 'can';
     break;
   case 'Нужна помощь':
@@ -134,11 +134,19 @@ if (givejob === 'Да') {
   switch (jobtype) {
     case 'Удаленно':
       doc['jobtype'] = 'online';
-      title = 'Готов предоставить удаленную работу';
+      if (requestType === 'can') {
+        title = 'Готов предоставить удаленную работу';
+      } else {
+        title = 'Нужна удаленная работа';
+      }
       break;
     case 'Локально':
       doc['jobtype'] = 'local';
-      title = 'Готов предоставить локальную работу в '+joblocation;
+      if (requestType === 'can') {
+        title = 'Готов предоставить локальную работу в ' + joblocation;
+      } else {
+        title = 'Нужна локальная работа в ' + joblocation;
+      }
       break;
   }
   if (jobscope) {
@@ -151,12 +159,17 @@ if (givejob === 'Да') {
     title = `${title}
     Описание: ${jobabout}`;
   }
-  message += `\n${canIcon}${title}`;
+  message += `\n${splitter}${title}`;
   //
   if (vacancyurl) {
     doc['vacancyurl'] = vacancyurl;
     const vacancyText = qnext.html.link('Ссылка на вакансию', vacancyurl);
-    message += `\n${canIcon}${vacancyText}.`;
+    message += `\n${splitter}${vacancyText}.`;
+  }
+  if (resumeurl) {
+    doc['resumeurl'] = resumeurl;
+    const resumeText = qnext.html.link('Ссылка на резюме', resumeurl);
+    message += `\n${splitter}${resumeText}.`;
   }
 }
 
