@@ -153,7 +153,7 @@ if (givejob === 'Да') {
   //
   if (vacancyurl) {
     doc['vacancyurl'] = vacancyurl;
-    const vacancyText = qnext.html.link('Ссылка на вакансию', )vacancyurl;
+    const vacancyText = qnext.html.link('Ссылка на вакансию', vacancyurl);
     message += `\n${canIcon}${vacancyText}.`;
   }
 }
