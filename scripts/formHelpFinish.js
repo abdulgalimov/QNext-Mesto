@@ -1,6 +1,6 @@
 
 const {user, formResult} = qnext.data;
-const {name, givejob, jobtype, joblocation, jobscope, jobabout, type} = formResult.values;
+const {name, relocationplace, givejob, jobtype, joblocation, jobscope, jobabout, type} = formResult.values;
 const {italic} = qnext.html;
 
 const vacancyurl = formResult.data.vacancyurl ? formResult.data.vacancyurl.text : null;
@@ -139,6 +139,9 @@ function addLine(type) {
 }
 addLine('location');
 addLine('relocation');
+if (relocationplace) {
+  message += `\n    Релокация в ${relocationplace}`;
+}
 addLine('housing');
 addLine('psychological');
 addLine('legal');
