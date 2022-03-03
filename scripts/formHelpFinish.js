@@ -109,11 +109,13 @@ switch (type) {
     message = `💙 Могу помочь.`;
     splitter = '🔹';
     requestType = 'can';
+    exports.requestType = 1;
     break;
   case 'Нужна помощь':
     message = `❤️ Нужна помощь.`;
     splitter = '🔺';
     requestType = 'need';
+    exports.requestType = 2;
     break;
 }
 const doc = {
