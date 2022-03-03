@@ -1,6 +1,6 @@
 
 const {user, formResult} = qnext.data;
-const {givejob, jobtype, joblocation, jobscope, jobabout, type} = formResult.values;
+const {name, givejob, jobtype, joblocation, jobscope, jobabout, type} = formResult.values;
 const {italic} = qnext.html;
 
 const vacancyurl = formResult.data.vacancyurl ? formResult.data.vacancyurl.text : null;
@@ -197,6 +197,9 @@ if (tags.length) {
   message = `${message}
 
 ${tags.join(' ')}`
+}
+if (name) {
+  message += `\n\n${name}`
 }
 
 
