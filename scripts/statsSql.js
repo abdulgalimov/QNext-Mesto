@@ -6,7 +6,7 @@ const ignoreKeys = {
   botId: 1,
   version: 1,
 };
-const maxResultCount = 20;
+const maxResultCount = 2000;
 async function run() {
   if (!text) {
     exports.error = true;
