@@ -25,3 +25,5 @@ LIMIT 10`;
   const result = await qnext.customStats.readSql(sql);
   console.log('result', result);
 }
+
+run().finally(qnext.onFinish);
