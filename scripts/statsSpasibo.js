@@ -10,7 +10,7 @@ console.log('options', options);
 
 const current = options.current === 1;
 let userParamName;
-switch (options.target) {
+switch (options.user) {
   case 'author':
     userParamName = 'param3';
     break;
