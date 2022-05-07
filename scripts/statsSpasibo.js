@@ -35,6 +35,7 @@ async function run() {
     toDate.setHours(0, 0, 0, 0);
     toDate.setDate(1);
   }
+  console.log('spadibo read date', fromDate, toDate);
   const fromMonth = getMonthValue(fromDate);
   const toMonth = getMonthValue(toDate);
   const sql = `
