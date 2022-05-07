@@ -30,7 +30,16 @@ GROUP BY param3
 ORDER BY cnt DESC
 LIMIT 10`;
   const result = await qnext.customStats.readSql(sql);
-  console.log('result', result);
+  if (result.ok) {
+    const userIds = [];
+    const counts = {};
+    result.response.map(({userId, cnt}) => {
+      userIds.push(userId);
+      counts[counts] = cnt;
+    });
+    exports.userIds = userIds;
+    exports.counts = counts;
+  }
 }
 
 run().finally(qnext.onFinish);
