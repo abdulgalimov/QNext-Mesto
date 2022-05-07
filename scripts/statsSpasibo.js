@@ -15,7 +15,7 @@ async function run() {
   console.log('date: ', fromDate, toDate);
   const sql = `
 SELECT COUNT() AS cnt, param3 as userId
-FROM stats
+FROM CustomStats
 WHERE param1=2009
   AND createdDate > '${fromDate.getFullYear()}-${fromDate.getMonth()+1}-01 00:00:00'
   AND createdDate < '${toDate.getFullYear()}-${toDate.getMonth()+1}-01 00:00:00'
