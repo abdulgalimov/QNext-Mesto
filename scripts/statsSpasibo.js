@@ -1,4 +1,9 @@
-const {current} = qnext.data.localVar
+const {current} = qnext.data.localVar;
+
+function getMonthValue(date) {
+  const value = '0'+(date.getMonth()+1);
+  return value.substring(-2);
+}
 
 async function run() {
   let fromDate = new Date();
@@ -12,13 +17,15 @@ async function run() {
     fromDate.setMonth(fromDate.getMonth() - 1);
     toDate.setDate(1);
   }
-  console.log('date: ', fromDate, toDate);
+  const fromMonth = getMonthValue(fromDate);
+  const toMonth = getMonthValue(toDate);
+  console.log('date: ', fromDate, toDate, fromMonth, toMonth);
   const sql = `
 SELECT COUNT() AS cnt, param3 as userId
 FROM CustomStats
 WHERE param1=2009
-  AND createdDate > '${fromDate.getFullYear()}-${fromDate.getMonth()+1}-01 00:00:00'
-  AND createdDate < '${toDate.getFullYear()}-${toDate.getMonth()+1}-01 00:00:00'
+  AND createdDate > '${fromDate.getFullYear()}-${fromMonth}-01 00:00:00'
+  AND createdDate < '${toDate.getFullYear()}-${toMonth}-01 00:00:00'
 GROUP BY param3
 ORDER BY cnt DESC
 LIMIT 10`;
