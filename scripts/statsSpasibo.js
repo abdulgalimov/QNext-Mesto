@@ -3,6 +3,7 @@ const options = qnext.data.triggerValue
   .reduce((data, line) => {
     const [k, v] = line.split('=');
     data[k] = v;
+    return data;
   }, {});
 
 console.log('options', options);
