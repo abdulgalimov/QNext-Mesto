@@ -1,4 +1,4 @@
-const options = qnext.triggerValue
+const options = qnext.data.triggerValue
   .split(';')
   .reduce((data, line) => {
     const [k, v] = line.split('=');
