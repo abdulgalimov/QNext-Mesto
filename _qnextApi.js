@@ -7,7 +7,9 @@ async function system() {
 
 global.exports = {}
 global.qnext = {
-  data: {},
+  data: {
+    localVar: {}
+  },
   onFinish(message) {},
   getValue(path, def) {},
   database: {
