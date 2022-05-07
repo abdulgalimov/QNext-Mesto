@@ -9,12 +9,11 @@ async function run() {
   let fromDate = new Date();
   fromDate.setHours(0, 0, 0, 0);
   fromDate.setDate(1);
-  fromDate.setMonth(fromDate.getMonth() - 1);
   //
   let toDate = new Date();
-  toDate.setHours(0, 0, 0, 0);
   if (!current) {
     fromDate.setMonth(fromDate.getMonth() - 1);
+    toDate.setHours(0, 0, 0, 0);
     toDate.setDate(1);
   }
   const fromMonth = getMonthValue(fromDate);
