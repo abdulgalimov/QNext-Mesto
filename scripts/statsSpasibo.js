@@ -35,7 +35,7 @@ LIMIT 10`;
     const counts = {};
     result.response.map(({userId, cnt}) => {
       userIds.push(userId);
-      counts[counts] = cnt;
+      counts[userId] = cnt;
     });
     exports.userIds = userIds;
     exports.counts = counts;
