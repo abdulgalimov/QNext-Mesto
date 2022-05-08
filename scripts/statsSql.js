@@ -56,7 +56,7 @@ select ... from stats where ...`;
     lines.map((line, k) => {
       line.map((value, index) => {
         const spacesCount = spaces[index];
-        line[index] = (spacesStr+value).substr(-spacesCount);
+        line[index] = (spacesStr+value).slice(-spacesCount);
       })
       lines[k] = line.join(' | ');
     })

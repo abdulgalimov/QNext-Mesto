@@ -11,7 +11,7 @@ const places = userIds
   .map(userId => {
     const user = byId[userId];
     if (!user) return;
-    const numView = ('0'+(num++)).substring(-2);
+    const numView = ('0'+(num++)).slice(-2);
     const count = counts[userId]||0;
     const userName = qnext.html.link(user.name, qnext.urls.user(user));
     return `${numView}) ${count} - ${userName}`;

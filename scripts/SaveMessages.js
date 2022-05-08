@@ -13,7 +13,7 @@ async function run() {
   const messageId = message.message_id;
   let linkChatId;
   if (chat) {
-    linkChatId = (''+chat.id).substr(4);
+    linkChatId = (''+chat.id).slice(4);
   }
   const data = {
     userId: user.id,

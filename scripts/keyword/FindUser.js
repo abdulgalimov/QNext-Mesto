@@ -5,7 +5,7 @@ let text = message ? message.text||message.caption : null;
 
 const chat = qnext.getValue('chat');
 const chatId = Math.abs(chat.id)+'';
-exports.link = 'https://t.me/c/'+chatId.substr(3)+'/'+message.message_id;
+exports.link = 'https://t.me/c/'+chatId.slice(3)+'/'+message.message_id;
 
 const notifyUsers = [];
 async function run() {
