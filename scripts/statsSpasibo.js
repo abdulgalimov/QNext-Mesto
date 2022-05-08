@@ -38,12 +38,14 @@ async function run() {
   console.log('spadibo read date', fromDate, toDate);
   const fromMonth = getMonthValue(fromDate);
   const toMonth = getMonthValue(toDate);
+  const fromValue = `${fromDate.getFullYear()}-${fromMonth}-01 00:00:00`;
+  const toValue = `${toDate.getFullYear()}-${toMonth}-01 00:00:00`;
   const sql = `
 SELECT COUNT() AS cnt, ${userParamName} as userId
 FROM CustomStats
 WHERE param1=2009
-  AND createdDate > '${fromDate.getFullYear()}-${fromMonth}-01 00:00:00'
-  AND createdDate < '${toDate.getFullYear()}-${toMonth}-01 00:00:00'
+  AND createdDate > '${fromValue}'
+  AND createdDate < '${toValue}';
 GROUP BY ${userParamName}
 ORDER BY cnt DESC
 LIMIT 10`;
@@ -57,6 +59,7 @@ LIMIT 10`;
     });
     exports.userIds = userIds;
     exports.counts = counts;
+    exports.dateView = `${fromValue} - ${toValue}`;
   }
 }
 
