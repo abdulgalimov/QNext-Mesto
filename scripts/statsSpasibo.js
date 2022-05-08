@@ -10,12 +10,15 @@ console.log('options', options);
 
 const current = options.current === 1;
 let userParamName;
+let titleView;
 switch (options.user) {
   case 'author':
     userParamName = 'param3';
+    titleView = 'Кто благодарил';
     break;
   case 'target':
     userParamName = 'param4';
+    titleView = 'Кого благодарили';
     break;
 }
 
@@ -59,7 +62,8 @@ LIMIT 10`;
     });
     exports.userIds = userIds;
     exports.counts = counts;
-    exports.dateView = `${fromValue} - ${toValue}`;
+    exports.titleView = `${titleView} за период:
+${fromValue} - ${toValue}`;
   }
 }
 

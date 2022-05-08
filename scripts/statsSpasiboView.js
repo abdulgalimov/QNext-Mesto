@@ -1,5 +1,5 @@
 
-const {userIds, users, counts, dateView} = qnext.data.localVar;
+const {userIds, users, counts, titleView} = qnext.data.localVar;
 
 const byId = users.reduce((data, user) => {
   data[user.id] = user;
@@ -16,7 +16,6 @@ const places = userIds
     return `${num++}) ${count} - ${userName}`;
   })
   .filter(line => !!line);
-exports.message = `Спасибо за период:
-${dateView}
+exports.message = `${titleView}
 
 ${places.join('\n')}`;
