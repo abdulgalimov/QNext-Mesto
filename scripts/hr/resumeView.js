@@ -24,3 +24,4 @@ if (resumeLink) {
   view = `${view}
 ${qnext.html.link('Ссылка на резюме.', resumeLink)}`;
 }
+exports.resumeView = view;
