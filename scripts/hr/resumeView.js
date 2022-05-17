@@ -27,13 +27,12 @@ function formatSalary() {
 
 let view = `Резюме ${position}
 ${about}
-
-Зарплатные ожидания: ${formatSalary()} ${currency}
 Ключевые навыки: ${keys.join(', ')}
 Формат работы: ${format.join(', ')}
 
 Имя: ${name}
-Контакты: ${contacts}`
+Контакты: ${contacts}
+${formatSalary()} ${currency}`
 if (resumeLink) {
   view = `${view}
 ${qnext.html.link('Ссылка на резюме.', resumeLink)}`;
