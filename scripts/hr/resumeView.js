@@ -31,6 +31,8 @@ ${about}
 Зарплатные ожидания: ${formatSalary()} ${currency}
 Ключевые навыки: ${keys.join(', ')}
 Формат работы: ${format.join(', ')}
+
+Имя: ${name}
 Контакты: ${contacts}`
 if (resumeLink) {
   view = `${view}
