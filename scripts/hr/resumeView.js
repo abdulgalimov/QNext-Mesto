@@ -13,12 +13,24 @@ const {
   salary,
 } = dataValue.fields;
 
+function formatSalary() {
+  return (''+salary)
+    .split('')
+    .reverse()
+    .join('')
+    .replaceAll(/(\d{3})/g, '$1 ')
+    .trim()
+    .split('')
+    .reverse()
+    .join('')
+}
+
 let view = `Резюме ${position}
 ${about}
 
-Зарплатные ожидания: ${salary}${currency}
-Ключевые навыки: ${keys}
-Формат работы: ${format}
+Зарплатные ожидания: ${formatSalary()} ${currency}
+Ключевые навыки: ${keys.join(', ')}
+Формат работы: ${format.join(', ')}
 Контакты: ${contacts}`
 if (resumeLink) {
   view = `${view}
